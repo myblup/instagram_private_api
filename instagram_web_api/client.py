@@ -307,8 +307,9 @@ class Client(object):
         init_res_content = self._read_response(init_res)
         rhx_gis = self._extract_rhx_gis(init_res_content)
         self.rhx_gis = rhx_gis
-        if not self.csrftoken:
-            raise ClientError('Unable to get csrf from init request.')
+        ## Breaks since 20something may 2018, and not needed for reading
+        # if not self.csrftoken:
+        #     raise ClientError('Unable to get csrf from init request.')
         if not self.rhx_gis:
             raise ClientError('Unable to get rhx_gis from init request.')
         # required to avoid 403 when doing unauthenticated requests
