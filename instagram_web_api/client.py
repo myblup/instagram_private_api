@@ -317,7 +317,7 @@ class Client(object):
             'https://www.instagram.com/', return_response=True, get_method=lambda: 'GET')
         init_res_content = self._read_response(init_res)
 
-        rhx_gis = self._extract_rhx_gis(init_res_content)
+        rhx_gis = self._extract_rhx_gis(init_res_content) or 'NotUsedAnymore'
         self.rhx_gis = rhx_gis
 
         if not self.csrftoken:
