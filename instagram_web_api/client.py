@@ -248,6 +248,10 @@ class Client(object):
             if sig:
                 headers['X-Instagram-GIS'] = sig
 
+        # fix on 2019-08-09 : https://github.com/rarcega/instagram-scraper/issues/424#issuecomment-519836523
+        # empty x-csrftoken is forbidden by instagram even if not authenticated
+        headers.setdefault('x-csrftoken', '203b8a63ee186ca554961955c2ea54a1')
+
         req = compat_urllib_request.Request(url, headers=headers)
         if get_method:
             req.get_method = get_method
