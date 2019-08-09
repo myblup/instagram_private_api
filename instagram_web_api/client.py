@@ -359,7 +359,7 @@ class Client(object):
         init_res_content = self._read_response(init_res)
         self.logger.debug('RES BODY: {0!s}'.format(init_res_content))
 
-        rhx_gis = self._extract_rhx_gis(init_res_content)
+        rhx_gis = self._extract_rhx_gis(init_res_content) or 'NotUsedAnymore'
         self.rhx_gis = rhx_gis
 
         rollout_hash = self._extract_rollout_hash(init_res_content)
